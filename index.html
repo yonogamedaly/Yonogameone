@@ -264,7 +264,10 @@
   .top-card:nth-child(2)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
   .top-card:nth-child(3)::before { background: linear-gradient(90deg, #10b981, #34d399); }
 
-  .rank {
+   .rank {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
     position: absolute;
     top: 8px;
     left: 8px;
@@ -275,9 +278,18 @@
     color: #0f172a;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   }
-  .top-card:nth-child(1) .rank { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
-  .top-card:nth-child(2) .rank { background: linear-gradient(135deg, #93c5fd, #60a5fa); }
-  .top-card:nth-child(3) .rank { background: linear-gradient(135deg, #6ee7b7, #34d399); }
+  .top-card:nth-child(1)  .rank {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer; background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+  .top-card:nth-child(2)  .rank {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer; background: linear-gradient(135deg, #93c5fd, #60a5fa); }
+  .top-card:nth-child(3)  .rank {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer; background: linear-gradient(135deg, #6ee7b7, #34d399); }
 
   .hot {
     position: absolute;
@@ -371,7 +383,9 @@
     border: 1px solid #f1f5f9;
     position: relative;
   }
-  .rank-badge {
+   .rank-badge {
+    text-decoration: none;
+    cursor: pointer;
     position: absolute;
     left: -7px;
     top: -7px;
@@ -554,7 +568,7 @@
 
   <div class="top-row">
     <div class="top-card">
-      <div class="rank">1</div>
+      <a href="games/teenpatti-master.html" class="rank">1</a>
       <div class="hot">HOT</div>
       <img src="images/teen-patti.png" class="top-icon" alt="Teen Patti">
       <h3>Teen Patti</h3>
@@ -563,7 +577,7 @@
     </div>
 
     <div class="top-card">
-      <div class="rank">2</div>
+      <a href="games/yono-rummy.html" class="rank">2</a>
       <div class="hot">HOT</div>
       <img src="images/yono-rummy.png" class="top-icon" alt="Yono Rummy">
       <h3>Yono Rummy</h3>
@@ -572,7 +586,7 @@
     </div>
 
     <div class="top-card">
-      <div class="rank">3</div>
+      <a href="games/spin-777.html" class="rank">3</a>
       <div class="hot">HOT</div>
       <img src="images/spin-777.png" class="top-icon" alt="Spin 777">
       <h3>Spin 777</h3>
@@ -693,13 +707,15 @@
     {name:"789 Jackpots", bonus:100, link:"https://join789jackpots1.cc/?code=J7Z5FYS6JKH&t=1794811148"}
   ];
 
+  const slugMap = {"11 ABC Rummy": "11-abc-rummy", "567 Slots": "567-slots", "567 Slot": "567-slots", "789 Jackpots": "789-jackpots", "Benz.Game": "benz-game", "Bingo 101": "bingo-101", "Boss Rummy": "boss-rummy", "Club INR": "club-inr", "Dhan Game": "dhan-game", "Diwa Ace": "diwa-ace", "Diwa Game": "diwa-game", "Diwa Lucky": "diwa-lucky", "Diwa Play": "diwa-play", "Diwa Rummy": "diwa-rummy", "Diwa Slot": "diwa-slot", "Diwa Spin": "diwa-spin", "Diwa777": "diwa777", "Diwatop": "diwatop", "Divaking": "divaking", "Game Rummy": "game-rummy", "Gogo Rummy": "gogo-rummy", "Hindi777": "hindi777", "Hi Rummy": "hi-rummy", "Ind Club": "ind-club", "Ind Rummy": "ind-rummy", "Ind Slot": "ind-slot", "Jaiho Arcade": "jaiho-arcade", "Jaiho Rummy": "jaiho-rummy", "Jaiho Win": "jaiho-win", "Jaiho 777": "jaiho-777", "Jaiho 91": "jaiho-91", "Jaiho Play": "jaiho-play", "Joy Rummy": "joy-rummy", "Love Rummy": "love-rummy", "Maha Game": "maha-game", "MBM Bet": "mbm-bet", "Neta VIP": "neta-vip", "OK Rummy": "ok-rummy", "Rumble Rummy": "rumble-rummy", "Rummy Ludo": "rummy-ludo", "Rummy 91": "rummy-91", "Rummy 77": "rummy-77", "Rummy 888": "rummy-888", "OKMM": "okmm", "Rummy77": "rummy-77", "Rummy888": "rummy-888", "Saga Slot": "saga-slot", "Share Slots": "share-slots", "Slot Spin": "slot-spin", "Slot Winner": "slot-winner", "Spin 777": "spin-777", "Spin Crus": "spin-crus", "Spin Rummy": "spin-rummy", "Spin Gold": "spin-gold", "Spin Winner": "spin-winner", "Spin 101": "spin-101", "Teen Patti Master": "teenpatti-master", "Teenpatti Master": "teenpatti-master", "SVIP777": "svip777", "TP Kasino": "tp-kasino", "Teenpatti Master Gold": "teenpatti-master-gold", "Teenpatti Star": "teenpatti-star", "VIP Rummy": "vip-rummy", "Yono Arcade": "yono-arcade", "Yono Games": "yono-games", "Yono Rummy": "yono-rummy", "Yono VIP": "yono-vip", "Yono777": "yono777"};
+
   const list = document.getElementById('games-list');
   games.forEach((g, index) => {
     const imgName = g.name.toLowerCase().replace(/[^a-z0-9]/g,'-') + '.png';
-    const slug = g.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    const slug = slugMap[g.name] || g.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     list.innerHTML += `
       <div class="app-item">
-        <div class="rank-badge">${index + 1}</div>
+        <a href="games/${slug}.html" class="rank-badge">${index + 1}</a>
         <img src="images/${imgName}" class="app-icon" alt="${g.name}">
         <div class="app-info">
           <h4>${g.name}</h4>
