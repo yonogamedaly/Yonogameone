@@ -559,7 +559,7 @@
       <img src="images/teen-patti.png" class="top-icon" alt="Teen Patti">
       <h3>Teen Patti</h3>
       <div class="bonus-line">₹150<small>Bonus</small></div>
-      <a href="#" class="dl-btn">Download</a>
+      <a href="games/teenpatti-master.html" class="dl-btn">Download</a>
     </div>
 
     <div class="top-card">
@@ -568,7 +568,7 @@
       <img src="images/yono-rummy.png" class="top-icon" alt="Yono Rummy">
       <h3>Yono Rummy</h3>
       <div class="bonus-line">₹180<small>Bonus</small></div>
-      <a href="#" class="dl-btn">Download</a>
+      <a href="games/yono-rummy.html" class="dl-btn">Download</a>
     </div>
 
     <div class="top-card">
@@ -577,7 +577,7 @@
       <img src="images/spin-777.png" class="top-icon" alt="Spin 777">
       <h3>Spin 777</h3>
       <div class="bonus-line">₹120<small>Bonus</small></div>
-      <a href="#" class="dl-btn">Download</a>
+      <a href="games/spin-777.html" class="dl-btn">Download</a>
     </div>
   </div>
 
@@ -696,6 +696,7 @@
   const list = document.getElementById('games-list');
   games.forEach((g, index) => {
     const imgName = g.name.toLowerCase().replace(/[^a-z0-9]/g,'-') + '.png';
+    const slug = g.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     list.innerHTML += `
       <div class="app-item">
         <div class="rank-badge">${index + 1}</div>
@@ -707,7 +708,7 @@
             <span class="min-tag">Min. Withdraw ₹100</span>
           </div>
         </div>
-        <a href="${g.link}" target="_blank" class="green-btn">Download</a>
+        <a href="games/${slug}.html" class="green-btn">Download</a>
       </div>`;
   });
 </script>
